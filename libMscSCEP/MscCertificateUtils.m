@@ -17,12 +17,13 @@
 
 +(NSString*)getCertificatePublicKeyFingerPrint:(MscCertificate*)certificate error:(NSError**)error {
 	
+    unsigned char *certificateData = NULL;
     unsigned char hash[MD5_DIGEST_LENGTH];
 	MD5_CTX ctx;
     
     @try {
         
-        unsigned char *certificateData = NULL;
+        
         long certificateDataLength = i2d_PUBKEY(X509_get_pubkey(certificate._x509), &certificateData);
         if (certificateDataLength < 1) {
             @throw [[MscLocalException alloc] initWithErrorCode:FailedToReadCertificate errorUserInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Failed to read certificate BIO, function i2d_PUBKEY returned with: %ld", certificateDataLength]}];
@@ -44,17 +45,21 @@
         *error = [NSError errorWithDomain:e.errorDomain code:e.errorCode userInfo:e.errorUserInfo];
         return nil;
     }
+    @finally {
+        
+        OPENSSL_free(certificateData);
+    }
 }
 
 
 +(NSString*)getCertificateSigningRequestPublicKeyFingerPrint:(MscCertificateSigningRequest*)request error:(NSError**)error {
     
+    unsigned char *requestData = NULL;
     unsigned char hash[MD5_DIGEST_LENGTH];
 	MD5_CTX ctx;
     
     @try {
         
-        unsigned char *requestData = NULL;
         long requestDataLength = i2d_PUBKEY(X509_REQ_get_pubkey(request._request), &requestData);
         if (requestDataLength < 1) {
             @throw [[MscLocalException alloc] initWithErrorCode:FailedToReadCertificate errorUserInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Failed to read certificate BIO, function i2d_PUBKEY returned with: %ld", requestDataLength]}];
@@ -75,6 +80,10 @@
     @catch (MscLocalException *e) {
         *error = [NSError errorWithDomain:e.errorDomain code:e.errorCode userInfo:e.errorUserInfo];
         return nil;
+    }
+    @finally {
+        
+        OPENSSL_free(requestData);
     }
 }
 

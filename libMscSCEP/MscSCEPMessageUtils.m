@@ -50,10 +50,12 @@ static int nid_extensionReq;
 
 +(NSString*)encodeSCEPMessageWithMessageType:(SCEPMessage)messageType transaction:(MscSCEPTransaction*)transaction error:(NSError**)error {
     
+    unsigned char *requestData = NULL;
     BIO	*requestBIO = NULL;
     STACK_OF(X509) *recipients = NULL;
     BIO	*beEncrypted = NULL;
     PKCS7 *encryptedPKCS7 = NULL;
+    unsigned char* encryptedPKCS7Data = NULL;
     BIO	*encryptedPKCS7BIO = NULL;
     PKCS7 *signedPKCS7 = NULL;
     PKCS7_SIGNER_INFO *signerInfo = NULL;
@@ -70,7 +72,6 @@ static int nid_extensionReq;
         
         int returnCode;
         
-        unsigned char *requestData = NULL;
         long requestLength;
         
         if (messageType == SCEPMessage_PKCSReq) {
@@ -144,7 +145,6 @@ static int nid_extensionReq;
             @throw [[MscLocalException alloc] initWithErrorCode:FailedToEncodeSCEPMessage errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to encode SCEP message, function: PKCS7_encrypt"}];
         }
         
-        unsigned char* encryptedPKCS7Data = NULL;
         long encryptedPKCS7Length = i2d_PKCS7(encryptedPKCS7, &encryptedPKCS7Data);
         if (encryptedPKCS7Length < 1) {
             @throw [[MscLocalException alloc] initWithErrorCode:FailedToEncodeSCEPMessage errorUserInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat: @"Failed to encode SCEP message, function i2d_PKCS7 returned with: %ld", encryptedPKCS7Length]}];
@@ -270,9 +270,11 @@ static int nid_extensionReq;
         sk_X509_ATTRIBUTE_pop_free(signedPKCS7attributes, X509_ATTRIBUTE_free);
         BIO_free(encryptedPKCS7BIO);
         PKCS7_free(encryptedPKCS7);
+        OPENSSL_free(encryptedPKCS7Data);
         BIO_free(beEncrypted);
         sk_X509_free(recipients);
         BIO_free(requestBIO);
+        OPENSSL_free(requestData);
     }
 }
 

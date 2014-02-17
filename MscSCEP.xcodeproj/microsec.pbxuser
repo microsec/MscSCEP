@@ -63,6 +63,44 @@
 	580B5F721891619000FA64B8 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 	};
+	5816CFA418A12B4000107FD3 /* MscSCEPMessageUtils.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1370, 632}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 773}";
+		};
+	};
+	5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2434, 7813}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{23096, 3335}";
+		};
+	};
+	58716F7718AE65BA0004F345 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5816CFA418A12B4000107FD3 /* MscSCEPMessageUtils.h */;
+		name = "MscSCEPMessageUtils.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 773;
+		vrLoc = 0;
+	};
+	58716F7818AE65BA0004F345 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */;
+	};
+	58716F7D18AE65D20004F345 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */;
+		name = "MscSCEPMessageUtils.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 3335;
+		vrLoc = 23096;
+	};
 	5881120F1883E2A700D59AEF /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 580A2FF118894B84005EFBB4 /* MscSCEPTest */;
@@ -94,13 +132,16 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 414062835;
-			PBXWorkspaceStateSaveDate = 414062835;
+			PBXPerProjectTemplateStateSaveDate = 414082463;
+			PBXWorkspaceStateSaveDate = 414082463;
 		};
 		perUserProjectItems = {
 			580B5F701891619000FA64B8 /* PBXTextBookmark */ = 580B5F701891619000FA64B8 /* PBXTextBookmark */;
 			580B5F711891619000FA64B8 /* PBXTextBookmark */ = 580B5F711891619000FA64B8 /* PBXTextBookmark */;
 			580B5F721891619000FA64B8 /* PBXBookmark */ = 580B5F721891619000FA64B8 /* PBXBookmark */;
+			58716F7718AE65BA0004F345 /* PBXTextBookmark */ = 58716F7718AE65BA0004F345 /* PBXTextBookmark */;
+			58716F7818AE65BA0004F345 /* PBXBookmark */ = 58716F7818AE65BA0004F345 /* PBXBookmark */;
+			58716F7D18AE65D20004F345 /* PBXTextBookmark */ = 58716F7D18AE65D20004F345 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 580A300418894BA3005EFBB4 /* Source Control */;
 		userBuildSettings = {

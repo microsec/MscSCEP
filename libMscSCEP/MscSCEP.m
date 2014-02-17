@@ -73,7 +73,7 @@
             }
             
             if (OBJ_obj2nid(pkcs7->type) != NID_pkcs7_signed) {
-                @throw [[MscLocalException alloc] initWithErrorCode:FailedToDownloadCACertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to download server certificate, pkcs7 obejct type is not pkcs7_signed"}];
+                @throw [[MscLocalException alloc] initWithErrorCode:FailedToDownloadCACertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to download server certificate, pkcs7 object type is not pkcs7_signed"}];
             }
             
             STACK_OF(X509) *caCertificates = pkcs7->d.sign->cert;
