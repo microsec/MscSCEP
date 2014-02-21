@@ -8,10 +8,11 @@
 
 #import "MscSCEPMessageUtils.h"
 
-#import "MscRSAKeyRSA.h"
-#import "MscCertificateSigningRequestX509_REQ.h"
-#import "MscCertificateX509.h"
-#import "MscCertificateRevocationListX509_CRL.h"
+#import "MscRSAKey_OpenSSL_RSA.h"
+#import "MscCertificateSigningRequest_OpenSSL_X509_REQ.h"
+#import "MscCertificate_OpenSSL_X509.h"
+#import "MscCertificateRevocationList_OpenSSL_X509_CRL.h"
+#import "MscPKCS12_OpenSSL_PKCS12.h"
 #import "MscLocalException.h"
 #import "MscCertificateUtils.h"
 #import "MscSCEPResponsePrivate.h"
@@ -430,6 +431,31 @@ static int nid_extensionReq;
                     [certificates addObject:[[MscCertificate alloc] initWithX509:copyOfEnrolledCert]];
                 }
                 response.certificates = certificates;
+                
+                if (requestMessageType == SCEPMessage_PKCSReq || requestMessageType == SCEPMessage_GetCertInitial) {
+                    if (transaction.createPKCS12) {
+                        
+                        int i;
+                        MscCertificate* certificate;
+                        for (i = 0; i < [response.certificates count]; i++) {
+                            certificate = [response.certificates objectAtIndex:i];
+                            if (X509_check_private_key(certificate._x509, transaction.signerKey._evpkey)) {
+                                break;
+                            }
+                        }
+                        if (i < [response.certificates count]) {
+                            PKCS12* pkcs12 = PKCS12_create((char*)[transaction.pkcs12Password UTF8String], NULL, transaction.signerKey._evpkey, certificate._x509, NULL, NID_pbe_WithSHA1And3_Key_TripleDES_CBC, NID_pbe_WithSHA1And3_Key_TripleDES_CBC, 0, 0, KEY_SIG);
+                            if (!pkcs12) {
+                                @throw [[MscLocalException alloc] initWithErrorCode:FailedToEnrolCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to enrol certificate, function: PKCS12_create"}];
+                            }
+                            
+                            response.pkcs12 = [[MscPKCS12 alloc] initWithPKCS12:pkcs12];
+                        }
+                        else {
+                            @throw [[MscLocalException alloc] initWithErrorCode:FailedToEnrolCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to enrol certificate, private key and enrolled certificate do not match"}];
+                        }
+                    }
+                }
             }
             else if(requestMessageType == SCEPMessage_GetCRL) {
                 

@@ -9,11 +9,13 @@
 #import "MscSCEP.h"
 
 #import "MscLocalException.h"
-#import "MscCertificateX509.h"
+#import "MscCertificate_OpenSSL_X509.h"
 #import "MscCertificateUtils.h"
 #import "MscSCEPMessageUtils.h"
 
 #import "NSString+MscExtensions.h"
+
+#import <openssl/pkcs12.h>
 
 @implementation MscSCEP {
     
@@ -108,7 +110,7 @@
     }
 }
 
--(MscSCEPResponse*)enrolWithRSAKey:(MscRSAKey*)rsaKey certificateSigningRequest:(MscCertificateSigningRequest*)certificateSigningRequest certificate:(MscCertificate*)certificate caCertificate:(MscCertificate*)caCertificate error:(NSError**)error {
+-(MscSCEPResponse*)enrolWithRSAKey:(MscRSAKey*)rsaKey certificateSigningRequest:(MscCertificateSigningRequest*)certificateSigningRequest certificate:(MscCertificate*)certificate caCertificate:(MscCertificate*)caCertificate createPKCS12:(BOOL)createPKCS12 pkcs12Password:(NSString*)pkcs12Password error:(NSError**)error {
     
     @try {
         
@@ -127,10 +129,16 @@
             @throw [[MscLocalException alloc] initWithErrorCode:FailedToEnrolCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to enrol certificate, aCertificate parameter is missing"}];
         }
         
+        if (createPKCS12 && !pkcs12Password) {
+            @throw [[MscLocalException alloc] initWithErrorCode:FailedToEnrolCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to enrol certificate, pkcs12Password parameter is missing"}];
+        }
+        
         MscSCEPTransaction* transaction = [[MscSCEPTransaction alloc] init];
         transaction.scepServerURL = url;
         transaction.senderNonce = [NSString randomAlphanumericStringWithLength:16];
         transaction.transactionID = [MscCertificateUtils getCertificatePublicKeyFingerPrint:certificate error:&error];
+        transaction.createPKCS12 = createPKCS12;
+        transaction.pkcs12Password = pkcs12Password;
         if (nil != error) {
             @throw [[MscLocalException alloc] initWithErrorCode:error.code errorUserInfo:error.userInfo];
         }
@@ -144,6 +152,7 @@
         if (nil != error) {
             @throw [[MscLocalException alloc] initWithErrorCode:error.code errorUserInfo:error.userInfo];
         }
+        
         return response;
         
     }

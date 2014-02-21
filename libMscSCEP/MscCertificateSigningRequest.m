@@ -7,10 +7,10 @@
 //
 
 #import "MscCertificateSigningRequest.h"
-#import "MscCertificateSigningRequestX509_REQ.h"
+#import "MscCertificateSigningRequest_OpenSSL_X509_REQ.h"
 #import "NSString+MscExtensions.h"
 #import "MscLocalException.h"
-#import "MscRSAKeyRSA.h"
+#import "MscRSAKey_OpenSSL_RSA.h"
 #import "MscCertificateUtils.h"
 
 #import <openssl/x509.h>

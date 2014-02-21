@@ -31,12 +31,15 @@
 		5881125E1885476D00D59AEF /* MscCertificateSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5881125D1885476D00D59AEF /* MscCertificateSubject.m */; };
 		588AFC9918AB9DCD00647FDD /* MscCertificateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 588AFC9818AB9DCD00647FDD /* MscCertificateUtils.m */; };
 		588AFCAE18ABA7AA00647FDD /* MscCertificateRevocationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */; };
+		589F2EF118B35E22004BAA3E /* MscPKCS12.m in Sources */ = {isa = PBXBuildFile; fileRef = 589F2EF018B35E22004BAA3E /* MscPKCS12.m */; };
+		589F2EF518B37271004BAA3E /* MscPKCS12.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 589F2EEF18B35E22004BAA3E /* MscPKCS12.h */; };
+		589F2EF618B37276004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */; };
 		58AA742018AD085100E958C6 /* MscErrorCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5871EE5D188D6CE000098F95 /* MscErrorCodes.h */; };
-		58AA742118AD086000E958C6 /* MscRSAKeyRSA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58518964AB0000B873C /* MscRSAKeyRSA.h */; };
-		58AA742218AD086600E958C6 /* MscCertificateX509.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C57F189642C3000B873C /* MscCertificateX509.h */; };
-		58AA742318AD086C00E958C6 /* MscCertificateSigningRequestX509_REQ.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58918964E7F000B873C /* MscCertificateSigningRequestX509_REQ.h */; };
+		58AA742118AD086000E958C6 /* MscRSAKey_OpenSSL_RSA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */; };
+		58AA742218AD086600E958C6 /* MscCertificate_OpenSSL_X509.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */; };
+		58AA742318AD086C00E958C6 /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */; };
 		58AA742418AD087700E958C6 /* MscCertificateRevocationList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */; };
-		58AA742518AD087700E958C6 /* MscCertificateRevocationListX509_CRL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DF5C6918A4E4F100193F61 /* MscCertificateRevocationListX509_CRL.h */; };
+		58AA742518AD087700E958C6 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,11 +49,13 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				589F2EF618B37276004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h in CopyFiles */,
+				589F2EF518B37271004BAA3E /* MscPKCS12.h in CopyFiles */,
 				58AA742418AD087700E958C6 /* MscCertificateRevocationList.h in CopyFiles */,
-				58AA742518AD087700E958C6 /* MscCertificateRevocationListX509_CRL.h in CopyFiles */,
-				58AA742318AD086C00E958C6 /* MscCertificateSigningRequestX509_REQ.h in CopyFiles */,
-				58AA742218AD086600E958C6 /* MscCertificateX509.h in CopyFiles */,
-				58AA742118AD086000E958C6 /* MscRSAKeyRSA.h in CopyFiles */,
+				58AA742518AD087700E958C6 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h in CopyFiles */,
+				58AA742318AD086C00E958C6 /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h in CopyFiles */,
+				58AA742218AD086600E958C6 /* MscCertificate_OpenSSL_X509.h in CopyFiles */,
+				58AA742118AD086000E958C6 /* MscRSAKey_OpenSSL_RSA.h in CopyFiles */,
 				58AA742018AD085100E958C6 /* MscErrorCodes.h in CopyFiles */,
 				58618EB218A0D84E003377DA /* MscCertificateSubject.h in CopyFiles */,
 				58618EB118A0D823003377DA /* MscSCEPResponse.h in CopyFiles */,
@@ -70,13 +75,13 @@
 		5816CFAB18A21AA800107FD3 /* MscOpenSSLExtension.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MscOpenSSLExtension.c; sourceTree = "<group>"; };
 		5831C57C189642A8000B873C /* MscCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificate.h; sourceTree = "<group>"; };
 		5831C57D189642A8000B873C /* MscCertificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificate.m; sourceTree = "<group>"; };
-		5831C57F189642C3000B873C /* MscCertificateX509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateX509.h; sourceTree = "<group>"; };
+		5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificate_OpenSSL_X509.h; sourceTree = "<group>"; };
 		5831C58218964A9A000B873C /* MscRSAKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscRSAKey.h; sourceTree = "<group>"; };
 		5831C58318964A9A000B873C /* MscRSAKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscRSAKey.m; sourceTree = "<group>"; };
-		5831C58518964AB0000B873C /* MscRSAKeyRSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscRSAKeyRSA.h; sourceTree = "<group>"; };
+		5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscRSAKey_OpenSSL_RSA.h; sourceTree = "<group>"; };
 		5831C58618964E60000B873C /* MscCertificateSigningRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateSigningRequest.h; sourceTree = "<group>"; };
 		5831C58718964E60000B873C /* MscCertificateSigningRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateSigningRequest.m; sourceTree = "<group>"; };
-		5831C58918964E7F000B873C /* MscCertificateSigningRequestX509_REQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscCertificateSigningRequestX509_REQ.h; sourceTree = "<group>"; };
+		5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscCertificateSigningRequest_OpenSSL_X509_REQ.h; sourceTree = "<group>"; };
 		5831C58A18993B18000B873C /* MscSCEPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPResponse.h; sourceTree = "<group>"; };
 		5831C58B18993B19000B873C /* MscSCEPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPResponse.m; sourceTree = "<group>"; };
 		5831C58D18993B53000B873C /* MscSCEPTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPTransaction.h; sourceTree = "<group>"; };
@@ -104,7 +109,10 @@
 		588AFC9B18ABA22700647FDD /* MscSCEPResponsePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPResponsePrivate.h; sourceTree = "<group>"; };
 		588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateRevocationList.h; sourceTree = "<group>"; };
 		588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateRevocationList.m; sourceTree = "<group>"; };
-		58DF5C6918A4E4F100193F61 /* MscCertificateRevocationListX509_CRL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateRevocationListX509_CRL.h; sourceTree = "<group>"; };
+		589F2EEF18B35E22004BAA3E /* MscPKCS12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscPKCS12.h; sourceTree = "<group>"; };
+		589F2EF018B35E22004BAA3E /* MscPKCS12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscPKCS12.m; sourceTree = "<group>"; };
+		589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscPKCS12_OpenSSL_PKCS12.h; sourceTree = "<group>"; };
+		58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateRevocationList_OpenSSL_X509_CRL.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +190,7 @@
 		588AFCA118ABA40300647FDD /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				589F2EEE18B35E0E004BAA3E /* PKCS12 */,
 				588AFCA418ABA4B100647FDD /* RSAKey */,
 				588AFCA518ABA4BC00647FDD /* CertificateSigningRequest */,
 				588AFCA618ABA4CA00647FDD /* Certificate */,
@@ -226,7 +235,7 @@
 			children = (
 				5831C58218964A9A000B873C /* MscRSAKey.h */,
 				5831C58318964A9A000B873C /* MscRSAKey.m */,
-				5831C58518964AB0000B873C /* MscRSAKeyRSA.h */,
+				5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */,
 			);
 			name = RSAKey;
 			sourceTree = "<group>";
@@ -236,7 +245,7 @@
 			children = (
 				5831C58618964E60000B873C /* MscCertificateSigningRequest.h */,
 				5831C58718964E60000B873C /* MscCertificateSigningRequest.m */,
-				5831C58918964E7F000B873C /* MscCertificateSigningRequestX509_REQ.h */,
+				5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */,
 			);
 			name = CertificateSigningRequest;
 			sourceTree = "<group>";
@@ -246,7 +255,7 @@
 			children = (
 				5831C57C189642A8000B873C /* MscCertificate.h */,
 				5831C57D189642A8000B873C /* MscCertificate.m */,
-				5831C57F189642C3000B873C /* MscCertificateX509.h */,
+				5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */,
 			);
 			name = Certificate;
 			sourceTree = "<group>";
@@ -256,7 +265,7 @@
 			children = (
 				588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */,
 				588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */,
-				58DF5C6918A4E4F100193F61 /* MscCertificateRevocationListX509_CRL.h */,
+				58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */,
 			);
 			name = CertificateRevocationList;
 			sourceTree = "<group>";
@@ -286,6 +295,16 @@
 				586BBA0918A52707005F1472 /* MscIssuerAndSubject.m */,
 			);
 			name = IssuerAndSubject;
+			sourceTree = "<group>";
+		};
+		589F2EEE18B35E0E004BAA3E /* PKCS12 */ = {
+			isa = PBXGroup;
+			children = (
+				589F2EEF18B35E22004BAA3E /* MscPKCS12.h */,
+				589F2EF018B35E22004BAA3E /* MscPKCS12.m */,
+				589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */,
+			);
+			name = PKCS12;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,6 +371,7 @@
 				5831C58C18993B19000B873C /* MscSCEPResponse.m in Sources */,
 				5831C58818964E60000B873C /* MscCertificateSigningRequest.m in Sources */,
 				5816CFAC18A21AA800107FD3 /* MscOpenSSLExtension.c in Sources */,
+				589F2EF118B35E22004BAA3E /* MscPKCS12.m in Sources */,
 				588AFCAE18ABA7AA00647FDD /* MscCertificateRevocationList.m in Sources */,
 				5871EE6C1891569A00098F95 /* NSString+MscExtensions.m in Sources */,
 			);

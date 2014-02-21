@@ -7,7 +7,7 @@
 //
 
 #import "MscCertificateRevocationList.h"
-#import "MscCertificateRevocationListX509_CRL.h"
+#import "MscCertificateRevocationList_OpenSSL_X509_CRL.h"
 #import "MscLocalException.h"
 
 #import "NSString+MscExtensions.h"

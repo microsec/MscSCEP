@@ -9,8 +9,8 @@
 #import "MscCertificateUtils.h"
 #import <openssl/md5.h>
 #import "MscLocalException.h"
-#import "MscCertificateX509.h"
-#import "MscCertificateSigningRequestX509_REQ.h"
+#import "MscCertificate_OpenSSL_X509.h"
+#import "MscCertificateSigningRequest_OpenSSL_X509_REQ.h"
 #import "NSString+MscExtensions.h"
 
 @implementation MscCertificateUtils
@@ -324,6 +324,33 @@
     @finally {
         
         BN_free(bigNumber);
+    }
+}
+
++(NSDate*)convertASN1_TIMEToNSDate:(ASN1_TIME*)asn1_time error:(NSError**)error {
+    
+    @try {
+        
+        NSString* dateString = [NSString stringWithCString:(const char*)asn1_time->data encoding:NSASCIIStringEncoding];
+        NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+        
+        if ([dateString length] == 13) {
+            [formatter setDateFormat:@"yyMMddHHmmss"];
+        } else if ([dateString length] == 15) {
+            [formatter setDateFormat:@"yyyyMMddHHmmss"];
+        } else {
+            @throw [[MscLocalException alloc] initWithErrorCode:FailedToConvertASN1_TIME errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to convert ASN1_TIME, format is unknown"}];
+        }
+        
+        return [formatter dateFromString:dateString];
+        
+    }
+    @catch (MscLocalException *e) {
+        
+        if (error) {
+            *error = [NSError errorWithDomain:e.errorDomain code:e.errorCode userInfo:e.errorUserInfo];
+        }
+        return nil;
     }
 }
 

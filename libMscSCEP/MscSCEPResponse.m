@@ -13,7 +13,7 @@
 
 @implementation MscSCEPResponse
 
-@synthesize messageType, pkiStatus, failInfo, certificates, certificateRevocationLists, transaction;
+@synthesize messageType, pkiStatus, failInfo, certificates, certificateRevocationLists, transaction, pkcs12;
 
 -(void)pollWithError:(NSError**)error {
     
@@ -32,6 +32,7 @@
         certificates = response.certificates;
         certificateRevocationLists = response.certificateRevocationLists;
         transaction = response.transaction;
+        pkcs12 = response.pkcs12;
     }
     @catch (MscLocalException *e) {
         

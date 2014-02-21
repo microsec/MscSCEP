@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MscPKCS12.h"
 
 typedef NS_ENUM(NSUInteger, SCEPMessage) {
     SCEPMessage_None            = 0,
@@ -43,6 +44,7 @@ typedef NS_ENUM(NSUInteger, SCEPFailInfo) {
 @property SCEPFailInfo failInfo;
 @property NSArray* certificates;
 @property NSArray* certificateRevocationLists;
+@property MscPKCS12* pkcs12;
 
 -(void)pollWithError:(NSError**)error;
 

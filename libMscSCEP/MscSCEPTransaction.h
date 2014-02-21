@@ -25,5 +25,7 @@
 @property MscIssuerAndSubject* issuerAndSubject;
 @property MscIssuerAndSerial* issuerAndSerial;
 @property NSURL* scepServerURL;
+@property BOOL createPKCS12;
+@property NSString* pkcs12Password;
 
 @end

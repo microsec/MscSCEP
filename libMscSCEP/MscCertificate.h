@@ -23,5 +23,7 @@
 -(MscCertificateSubject*)getSubjectWithError:(NSError**)error;
 -(MscCertificateSubject*)getIssuerWithError:(NSError**)error;
 -(NSString*)getSerialWithError:(NSError**)error;
+-(NSDate*)getNotBeforeWithError:(NSError**)error;
+-(NSDate*)getNotAfterWithError:(NSError**)error;
 
 @end

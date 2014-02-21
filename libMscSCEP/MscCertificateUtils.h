@@ -20,5 +20,6 @@
 +(NSString*)getCertificatePublicKeyFingerPrint:(MscCertificate*)certificate error:(NSError**)error;
 +(NSString*)convertASN1_INTEGERToNSString:(ASN1_INTEGER*)serialNumber error:(NSError**)error;
 +(ASN1_INTEGER*)convertNSStringToASN1_INTEGER:(NSString*)serialNumber error:(NSError**)error;
++(NSDate*)convertASN1_TIMEToNSDate:(ASN1_TIME*)asn1_time error:(NSError**)error;
 
 @end

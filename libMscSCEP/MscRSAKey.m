@@ -7,7 +7,7 @@
 //
 
 #import "MscRSAKey.h"
-#import "MscRSAKeyRSA.h"
+#import "MscRSAKey_OpenSSL_RSA.h"
 #import "MscLocalException.h"
 #import "NSString+MscExtensions.h"
 

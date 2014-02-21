@@ -7,11 +7,11 @@
 //
 
 #import "MscCertificate.h"
-#import "MscCertificateX509.h"
+#import "MscCertificate_OpenSSL_X509.h"
 #import "NSString+MscExtensions.h"
 #import "MscLocalException.h"
-#import "MscCertificateSigningRequestX509_REQ.h"
-#import "MscRSAKeyRSA.h"
+#import "MscCertificateSigningRequest_OpenSSL_X509_REQ.h"
+#import "MscRSAKey_OpenSSL_RSA.h"
 #import "MscCertificateUtils.h"
 #import <openssl/pem.h>
 
@@ -264,6 +264,62 @@
             @throw [[MscLocalException alloc] initWithErrorCode:error.code errorUserInfo:error.userInfo];
         }
         return serial;
+
+    }
+    @catch (MscLocalException *e) {
+        
+        if (error) {
+            *error = [NSError errorWithDomain:e.errorDomain code:e.errorCode userInfo:e.errorUserInfo];
+        }
+        return nil;
+    }
+}
+
+-(NSDate*)getNotBeforeWithError:(NSError**)error {
+    
+    @try {
+        
+        NSError* error;
+        
+        ASN1_TIME* notBeforeASN1_TIME = X509_get_notBefore(_x509);
+        if (!notBeforeASN1_TIME) {
+            @throw [[MscLocalException alloc] initWithErrorCode:FailedToReadCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to read certificate, function: X509_get_notBefore"}];
+        }
+        
+        NSDate* notBefore = [MscCertificateUtils convertASN1_TIMEToNSDate:notBeforeASN1_TIME error:&error];
+        if (nil != error) {
+            @throw [[MscLocalException alloc] initWithErrorCode:error.code errorUserInfo:error.userInfo];
+        }
+        
+        return notBefore;
+        
+    }
+    @catch (MscLocalException *e) {
+        
+        if (error) {
+            *error = [NSError errorWithDomain:e.errorDomain code:e.errorCode userInfo:e.errorUserInfo];
+        }
+        return nil;
+    }
+}
+
+-(NSDate*)getNotAfterWithError:(NSError**)error {
+    
+    @try {
+        
+        NSError* error;
+        
+        ASN1_TIME* notAfterASN1_TIME = X509_get_notAfter(_x509);
+        if (!notAfterASN1_TIME) {
+            @throw [[MscLocalException alloc] initWithErrorCode:FailedToReadCertificate errorUserInfo:@{NSLocalizedDescriptionKey: @"Failed to read certificate, function: X509_get_notAfter"}];
+        }
+        
+        NSDate* notAfter = [MscCertificateUtils convertASN1_TIMEToNSDate:notAfterASN1_TIME error:&error];
+        if (nil != error) {
+            @throw [[MscLocalException alloc] initWithErrorCode:error.code errorUserInfo:error.userInfo];
+        }
+        
+        return notAfter;
         
     }
     @catch (MscLocalException *e) {

@@ -24,18 +24,21 @@
 #define FailedToWriteCertificate                    1010
 #define FailedToReadCertificateRevocationList       1011
 #define FailedToWriteCertificateRevocationList      1012
+#define FailedToReadPKCS12File                      1013
+#define FailedToWritePKCS12File                     1014
+#define FailedToParsePKCS12File                     1015
 
-#define FailedToConvertCertificateSubject           1013
-#define FailedToConvertSerialNumber                 1014
+#define FailedToConvertCertificateSubject           1016
+#define FailedToConvertSerialNumber                 1017
 
-#define FailedToDownloadCACertificate               1015
-#define FailedToEnrolCertificate                    1016
-#define FailedToDownloadCertificateRevocationList   1017
-#define FailedToDownloadCertificate                 1018
+#define FailedToDownloadCACertificate               1018
+#define FailedToEnrolCertificate                    1019
+#define FailedToDownloadCertificateRevocationList   1020
+#define FailedToDownloadCertificate                 1021
 
-#define FailedToEncodeSCEPMessage                   1019
-#define FailedToDecodeSCEPMessage                   1020
+#define FailedToEncodeSCEPMessage                   1022
+#define FailedToDecodeSCEPMessage                   1023
 
-
+#define FailedToConvertASN1_TIME                    1024
 
 @end
