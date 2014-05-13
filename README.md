@@ -1,80 +1,162 @@
-MscSCEP
-=======
-SCEP client library for iOS
+MscSCEP client library for iOS
+==============================
+Native Objective-C implementation of SCEP. 
+Latest version: 1.0.0
 
+Quick start guide
+-----------------
+Short examples for the implemented SCEP functions
 
-Documentation
-=============
-The following SCEP client functions were implemented:
-
-Download CA Certificate
------------------------
-You are able to download the certificate of the SCEP server in the following way:
-```Objective-C
-1. MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]];
-2. NSArray* caCertificates = [scepClient downloadCACertificate:&error];
+#### Download CA certificate
+To communicate with the SCEP server you have to have the certificate of SCEP server.
 ```
-######Details:
-1. initialize the SCEP client with the url of SCEP server. The default init method is disabled, you can use the initWithURL method for initialization. For testing purposes you can use our SCEP server. 
-2. downloadCACertificate method returns with the server certificate(s). If something went wrong, it will return with nil and the error informs you about the details. The number of returned certificates depends on the SCEP server. If it is a CA, the array sould contain only one certificate, if it is a RA, the array can contain multiple certificates. 
-
-Enrol
------
-You are able to request certificate from SCEP server in the following way:
-
-```Objective-C
-1.  NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-2.  MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]];
-3.  MscRSAKey* rsaKey = [[MscRSAKey alloc] initWithKeySize:KeySize_2048 error:&error];
-4.  MscCertificateSubject* subject = [[MscCertificateSubject alloc] init];
-5.  subject.commonName = @"MscSCEP tester";
-6.  subject.countryName = @"HU";
-7.  MscCertificateSigningRequest* csr = [[MscCertificateSigningRequest alloc] initWithSubject:subject rsaKey:rsaKey challengePassword:@"githubclient-ds" fingerPrintAlgorithm:FingerPrintAlgorithm_SHA256 error:&error];
-8.  MscCertificate* certificate = [[MscCertificate alloc] initWithRequest:csr rsaKey:rsaKey error:&error];
-9.  MscSCEPResponse* response = [scepClient enrolWithRSAKey:rsaKey certificateSigningRequest:csr certificate:certificate caCertificate:caCertificate createPKCS12:YES pkcs12Password:@"123456" error:&error];
-10. if (response.pkiStatus == SCEPPKIStatus_PENDING) {
-11.   [response pollWithError:&error];
-12.   if (response.pkiStatus == SCEPPKIStatus_SUCCESS) {
-13.     MscCertificate* cert = [response.certificates objectAtIndex:0];
-14.     NSString* enrolledCertificatePath = [documentPath stringByAppendingPathComponent:@"enrolledCertificate.cer"];
-15.     [cert saveToPath:enrolledCertificatePath error:&error];
-16.     NSString* pkcs12Path = [documentPath stringByAppendingPathComponent:@"pkcs12.pfx"];
-17.     MscPKCS12* pkcs12 = response.pkcs12;
-18.     [pkcs12 saveToPath:pkcs12Path error:&error];
-19.   }
-20. }
+NSError* error; //MscSCEP informs you about the errors via NSError
+NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]; //path for the document directory
+MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]]; //initialize client library with the URL of scep server
+NSArray* caCertificates = [scepClient downloadCACertificate:&error]; //download the certificate(s)
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+MscCertificate* caCertificate = [caCertificates objectAtIndex:0]; //operation was successful, take the first certificate
+NSString* caCertificateePath = [documentPath stringByAppendingPathComponent:@"caCertificate.cer"]; //path for the certificate
+[caCertificate saveToPath:caCertificateePath error:&error]; //save certificate to the given path
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
 ```
-######Details:
-1. get the path for document directory. It will be neccesary later.
-2. initialize the SCEP client with the url of SCEP server. The default init method is disabled, you can use the initWithURL method for initialization. For testing purposes you can use our SCEP server. 
-3. generate a RSA keypair. The default init method is disabled, you can use the initWithKeySize for initialization. Keysize can be: KeySize_2048 or KeySize_4096.
-4. initialize a MscCertificateSubject object. It will be necessary to generate the certificate signing request. You can specify the ordinary certificate subject properties, e.g.: commonName, localityName, stateOrProvinceName, organizationName, etc. 
-5. and 6. set commonName and countryName
-7. initalize a MscCertificateSigningRequest object. The default init method is disabled, you can use the initWithSubject for initialization. Be careful for the challengePassword parameters, this password use the SCEP server for authorize your request during the enrol process. For testing purposes you are able to use the following challenge passwords: githubclient-aut, githubclient-ke, githubclient-ds. More details in Testing section.
-8. initialize a MscCertificate object. The default init method is disabled, you can use the initWithRequest for initialization. 
-9. start the enrol process. The method will return with a MscSCEPResponse instance. If something went wrong, it will return with nil and the error informs you about the details. If you set the createPKCS12 and the pkcs12Password parameters, the client will generate a MscPKCS12 object which will be protected with the pkcs12Password. 
-10. check the response status. It can be: SCEPPKIStatus_SUCCESS, SCEPPKIStatus_FAILURE or SCEPPKIStatus_PENDING. If something went wrong and the response status is SCEPPKIStatus_FAILURE, you can check the failInfo property for the reason
-11. if the response status is SCEPPKIStatus_PENDING you are able to poll the SCEP server 
-12. if the response status is SCEPPKIStatus_SUCCESS, you can handle the response properties
-13. in enrol process certificates array should contain only one MscCertificate instance
-14. specify the path for certificate
-15. save the MscCertificate instance to the path
-16. specify the path for pkcs12 
-17. the pkcs12 property contains the MscPKCS12 instance if the createPKCS12 parameter was YES
-18. save the MscPKCS12 instance to the path
+The number of certificates depends on the type of SCEP server. If it is a CA, the array sould contain only one certificate, if it is a RA, the array can contain multiple certificates. You should always use the first certificate. 
 
-Download CRL
-------------
-Documentation soon...
+#### Request (enrol) certificate
+To request a certificate you have to have a RSA key, and a self-signed certificate.
+```
+NSError* error; //MscSCEP informs you about the errors via NSError
+NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]; //path for the document directory
+    
+MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]]; //initialize client library with the URL of scep server
+    
+MscRSAKey* rsaKey = [[MscRSAKey alloc] initWithKeySize:KeySize_2048 error:&error]; //generate a new RSA key. It can be 2048 or 4096 bit long
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
 
-Download Certificate
---------------------
-Documentation soon...
+MscCertificateSubject* subject = [[MscCertificateSubject alloc] init]; //initialize a certificate subject with the given common name and country. You can specify the following attributes: common name (CN), locality name (L), state or province name (ST), organization name (O), organizational unit name (OU), country name (C), street address (STREET), domain component (DC) and user identifier (UID).
+subject.commonName = @"MscSCEP tester";
+subject.countryName = @"HU";
+
+//initiliaze a certificate signing request with the following parameters
+MscCertificateSigningRequest* csr = [[MscCertificateSigningRequest alloc] initWithSubject:subject //subject
+                                    rsaKey:savedRSAkey //rsa key
+                                    challengePassword:@"testclient" //challenge passowrd 
+                                    fingerPrintAlgorithm:FingerPrintAlgorithm_SHA256 error:&error]; //fingerprint algorithm. It can be MD5, SHA1, SHA256 and SHA512
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+
+//initialize a self-signed certificate with the following parameters 
+MscCertificate* certificate = [[MscCertificate alloc] initWithRequest:csr //certificate signing request 
+                                rsaKey:rsaKey //rsa key 
+                                error:&error];
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+
+//request (enrol) a certificate with the following parameters
+MscSCEPResponse* response = [scepClient enrolWithRSAKey:rsaKey //rsa key
+                        certificateSigningRequest:csr //certificate signing request 
+                        certificate:certificate //self-signed certificate
+                        caCertificate:caCertificate //ca certificate which you can take with the downloadCACertificate function
+                        createPKCS12:YES //with YES you can get the certificate and the PKCS12 object as well
+                        pkcs12Password:@"123456" //password for PKCS12 
+                        error:&error]; 
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+
+if (response.pkiStatus == SCEPPKIStatus_PENDING) { //check response status
+    [response pollWithError:&error]; //If PENDING, try it again
+    if (nil != error) {
+        NSLog(@"error occured: %d", error.code); //check NSError
+    }
+    if (response.pkiStatus == SCEPPKIStatus_SUCCESS) { //If SUCCESS, save certificate and pkcs12 to document directory
+        MscCertificate* cert = [response.certificates objectAtIndex:0]; //enrolled certificate and the full certificate chain
+        NSString* enrolledCertificatePath = [documentPath stringByAppendingPathComponent:@"enrolledCertificate.cer"]; //path to certificate
+        [cert saveToPath:enrolledCertificatePath error:&error]; //save it to the given path
+        if (nil != error) {
+            NSLog(@"error occured: %d", error.code); //check NSError
+        }
+        
+        MscPKCS12* pkcs12 = response.pkcs12; //pkcs12 object
+        NSString* pkcs12Path = [documentPath stringByAppendingPathComponent:@"pkcs12.pfx"]; //path to pkcs12
+        [pkcs12 saveToPath:pkcs12Path error:&error]; //save it to the given path
+        if (nil != error) {
+            NSLog(@"error occured: %d", error.code); //check NSError
+        }
+    }
+}
+```
+
+
+#### Download certificate
+According to the SCEP specification, you do not have to store your certificate, it is enough to know the serial number and the issuer of your certificate. 
+```
+NSError* error; //MscSCEP informs you about the errors via NSError
+NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]; //path for the document directory
+NSString* rsaPath = [documentPath stringByAppendingPathComponent:@"rsa.key"]; //path for your saved RSA key
+MscRSAKey* rsaKey = [[MscRSAKey alloc] initWithContentsOfFile:rsaPath error:&error]; //initialize a rsa key instance with the path of key
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+
+MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]]; //initialize client library with the URL of scep server
+[scepClient downloadCertificateWithRSAKey:rsaKey //your RSAKey
+            issuer: issuer //issuer of your certificate (MscCertificateSubject instance)
+            serial: serial //serial number of your certificate
+            caCertificate:caCertificate //ca certificate which you can take with the downloadCACertificate function
+            error:&error];
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+```
+
+#### Download certificate revocation list
+To download a certificate revocation list you have to have a RSA key, a certificate (it can be self-signed) and need to know the serial number and the issuer of the related certificate 
+```
+NSError* error; //MscSCEP informs you about the errors via NSError
+NSString* documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]; //path for the document directory
+NSString* rsaPath = [documentPath stringByAppendingPathComponent:@"rsa.key"]; //path for your saved RSA key
+MscRSAKey* rsaKey = [[MscRSAKey alloc] initWithContentsOfFile:rsaPath error:&error]; //initialize a rsa key instance with the path
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+NSString* certificatePath = [documentPath stringByAppendingPathComponent:@"certificate.cer"]; //path for your certificate
+MscCertificate* certificate = [[MscCertificate alloc] initWithContentsOfFile:certificatePath error:&error]; //initialize a certificate instance with the path
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+
+MscSCEP* scepClient = [[MscSCEP alloc] initWithURL:[NSURL URLWithString:@"http://teszt.e-szigno.hu/scep"]]; //initialize client library with the URL of scep server
+
+[scepClient downloadCRLWithRSAKey:rsaKey //your RSAKey
+            certificate: certificate //your certificate
+            issuer: issuer //issuer of the related certificate (MscCertificateSubject instance)
+            serial: serial //serial number of the related certificate
+            caCertificate:caCertificate //ca certificate which you can take with the downloadCACertificate function
+            error:&error];
+if (nil != error) {
+    NSLog(@"error occured: %d", error.code); //check NSError
+}
+```
 
 Testing
-=======
-Documentation soon...
+-------
+For testing purposes you can use our TEST SCEP environment. 
+
+SCEP Server URL: http://teszt.e-szigno.hu/scep
+Challenge passwords by key usage: 
+- authentication: githubclient-aut
+- encryption:     githubclient-ke
+- signature:      githubclient-ds       
 
 License
-=======
+-------
 MscSCEP is available under GPLv2 license. In case where the contraints of the GPLv2 license is prevent you from using MscSCEP library or you would like to avoid the restrictions of the GPLv2 license, you can purchase a commercial license. For more information, please contact us: sales@microsec.hu
