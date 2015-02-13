@@ -72,9 +72,9 @@
 	};
 	5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2434, 7813}}";
+			sepNavIntBoundsRect = "{{0, 0}, {2462, 8567}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{23096, 3335}";
+			sepNavVisRange = "{22903, 3665}";
 		};
 	};
 	58716F7718AE65BA0004F345 /* PBXTextBookmark */ = {
@@ -86,10 +86,6 @@
 		rType = 0;
 		vrLen = 773;
 		vrLoc = 0;
-	};
-	58716F7818AE65BA0004F345 /* PBXBookmark */ = {
-		isa = PBXBookmark;
-		fRef = 5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */;
 	};
 	58716F7D18AE65D20004F345 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -115,7 +111,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					1020,
+					1005,
 					20,
 					48,
 					43,
@@ -132,16 +128,16 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 414082463;
-			PBXWorkspaceStateSaveDate = 414082463;
+			PBXPerProjectTemplateStateSaveDate = 424791844;
+			PBXWorkspaceStateSaveDate = 424791844;
 		};
 		perUserProjectItems = {
 			580B5F701891619000FA64B8 /* PBXTextBookmark */ = 580B5F701891619000FA64B8 /* PBXTextBookmark */;
 			580B5F711891619000FA64B8 /* PBXTextBookmark */ = 580B5F711891619000FA64B8 /* PBXTextBookmark */;
 			580B5F721891619000FA64B8 /* PBXBookmark */ = 580B5F721891619000FA64B8 /* PBXBookmark */;
 			58716F7718AE65BA0004F345 /* PBXTextBookmark */ = 58716F7718AE65BA0004F345 /* PBXTextBookmark */;
-			58716F7818AE65BA0004F345 /* PBXBookmark */ = 58716F7818AE65BA0004F345 /* PBXBookmark */;
 			58716F7D18AE65D20004F345 /* PBXTextBookmark */ = 58716F7D18AE65D20004F345 /* PBXTextBookmark */;
+			58FFEDAC1951CF3000680215 /* PBXTextBookmark */ = 58FFEDAC1951CF3000680215 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 580A300418894BA3005EFBB4 /* Source Control */;
 		userBuildSettings = {
@@ -156,5 +152,15 @@
 			sepNavSelRange = "{3474, 0}";
 			sepNavVisRange = "{2168, 1905}";
 		};
+	};
+	58FFEDAC1951CF3000680215 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */;
+		name = "MscSCEPMessageUtils.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 3665;
+		vrLoc = 22903;
 	};
 }

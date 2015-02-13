@@ -7,61 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5815C9BC18AE19D800FC0429 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 588112401883E33900D59AEF /* libcrypto.a */; };
-		5815C9BD18AE19D800FC0429 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 588112411883E33900D59AEF /* libssl.a */; };
+		1A14D7A719E40FB800A8318A /* MscSCEPResponsePrivate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 588AFC9B18ABA22700647FDD /* MscSCEPResponsePrivate.h */; };
+		1A14D7A919E40FBE00A8318A /* MscSCEPTransaction.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58D18993B53000B873C /* MscSCEPTransaction.h */; };
+		1AB1472E1A0822C10001EBB9 /* libMscHTTPSURLConnection.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AB147231A0820970001EBB9 /* libMscHTTPSURLConnection.a */; };
 		5816CFA618A12B4000107FD3 /* MscSCEPMessageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */; };
-		5816CFAC18A21AA800107FD3 /* MscOpenSSLExtension.c in Sources */ = {isa = PBXBuildFile; fileRef = 5816CFAB18A21AA800107FD3 /* MscOpenSSLExtension.c */; };
-		5831C57E189642A8000B873C /* MscCertificate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831C57D189642A8000B873C /* MscCertificate.m */; };
-		5831C58418964A9A000B873C /* MscRSAKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831C58318964A9A000B873C /* MscRSAKey.m */; };
-		5831C58818964E60000B873C /* MscCertificateSigningRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831C58718964E60000B873C /* MscCertificateSigningRequest.m */; };
 		5831C58C18993B19000B873C /* MscSCEPResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831C58B18993B19000B873C /* MscSCEPResponse.m */; };
 		5831C58F18993B53000B873C /* MscSCEPTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5831C58E18993B53000B873C /* MscSCEPTransaction.m */; };
-		58618EAE18A0D812003377DA /* MscRSAKey.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58218964A9A000B873C /* MscRSAKey.h */; };
-		58618EAF18A0D816003377DA /* MscCertificate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C57C189642A8000B873C /* MscCertificate.h */; };
-		58618EB018A0D81D003377DA /* MscCertificateSigningRequest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58618964E60000B873C /* MscCertificateSigningRequest.h */; };
 		58618EB118A0D823003377DA /* MscSCEPResponse.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58A18993B18000B873C /* MscSCEPResponse.h */; };
-		58618EB218A0D84E003377DA /* MscCertificateSubject.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5881125C1885476D00D59AEF /* MscCertificateSubject.h */; };
-		586BBA0718A526F9005F1472 /* MscIssuerAndSerial.m in Sources */ = {isa = PBXBuildFile; fileRef = 586BBA0618A526F9005F1472 /* MscIssuerAndSerial.m */; };
-		586BBA0A18A52707005F1472 /* MscIssuerAndSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 586BBA0918A52707005F1472 /* MscIssuerAndSubject.m */; };
-		5871EE65189108DD00098F95 /* MscLocalException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871EE64189108DD00098F95 /* MscLocalException.m */; };
-		5871EE6C1891569A00098F95 /* NSString+MscExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871EE6B1891569A00098F95 /* NSString+MscExtensions.m */; };
+		586DD4041994C79200BDBB6A /* MscSCEPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 586DD4031994C79200BDBB6A /* MscSCEPError.m */; };
+		5871EE65189108DD00098F95 /* MscSCEPLocalException.m in Sources */ = {isa = PBXBuildFile; fileRef = 5871EE64189108DD00098F95 /* MscSCEPLocalException.m */; };
+		58744CB6199505D900D8AB8C /* MscSCEPError.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 586DD4021994C79200BDBB6A /* MscSCEPError.h */; };
 		5881121B1883E2A700D59AEF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881121A1883E2A700D59AEF /* Foundation.framework */; };
 		588112201883E2A700D59AEF /* MscSCEP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5881121F1883E2A700D59AEF /* MscSCEP.h */; };
 		588112221883E2A700D59AEF /* MscSCEP.m in Sources */ = {isa = PBXBuildFile; fileRef = 588112211883E2A700D59AEF /* MscSCEP.m */; };
-		5881125E1885476D00D59AEF /* MscCertificateSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = 5881125D1885476D00D59AEF /* MscCertificateSubject.m */; };
-		588AFC9918AB9DCD00647FDD /* MscCertificateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 588AFC9818AB9DCD00647FDD /* MscCertificateUtils.m */; };
-		588AFCAE18ABA7AA00647FDD /* MscCertificateRevocationList.m in Sources */ = {isa = PBXBuildFile; fileRef = 588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */; };
-		589F2EF118B35E22004BAA3E /* MscPKCS12.m in Sources */ = {isa = PBXBuildFile; fileRef = 589F2EF018B35E22004BAA3E /* MscPKCS12.m */; };
-		589F2EF518B37271004BAA3E /* MscPKCS12.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 589F2EEF18B35E22004BAA3E /* MscPKCS12.h */; };
-		589F2EF618B37276004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */; };
-		58AA742018AD085100E958C6 /* MscErrorCodes.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5871EE5D188D6CE000098F95 /* MscErrorCodes.h */; };
-		58AA742118AD086000E958C6 /* MscRSAKey_OpenSSL_RSA.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */; };
-		58AA742218AD086600E958C6 /* MscCertificate_OpenSSL_X509.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */; };
-		58AA742318AD086C00E958C6 /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */; };
-		58AA742418AD087700E958C6 /* MscCertificateRevocationList.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */; };
-		58AA742518AD087700E958C6 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */; };
+		58AC753A19DD29FA0031F7C8 /* NSString+MscRandomExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AC753919DD29FA0031F7C8 /* NSString+MscRandomExtension.m */; };
+		58AC753B19DD2A6B0031F7C8 /* NSString+MscRandomExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 58AC753819DD29FA0031F7C8 /* NSString+MscRandomExtension.h */; };
+		58AC753E19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 58AC753D19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.m */; };
+		58F3992919599B4F00D706BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5881121A1883E2A700D59AEF /* Foundation.framework */; };
+		58F3993119599B4F00D706BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 58F3992F19599B4F00D706BB /* InfoPlist.strings */; };
+		58F3993319599B4F00D706BB /* MscSCEPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F3993219599B4F00D706BB /* MscSCEPTests.m */; };
+		58FED02519A369D7006CDDC9 /* libMscSCEP.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 588112171883E2A700D59AEF /* libMscSCEP.a */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1AB147221A0820970001EBB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB1471E1A0820970001EBB9 /* MscHTTPSURLConnection.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1A923AB419FE3CCD00169C84;
+			remoteInfo = MscHTTPSURLConnection;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		588112151883E2A700D59AEF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
+			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				589F2EF618B37276004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h in CopyFiles */,
-				589F2EF518B37271004BAA3E /* MscPKCS12.h in CopyFiles */,
-				58AA742418AD087700E958C6 /* MscCertificateRevocationList.h in CopyFiles */,
-				58AA742518AD087700E958C6 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h in CopyFiles */,
-				58AA742318AD086C00E958C6 /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h in CopyFiles */,
-				58AA742218AD086600E958C6 /* MscCertificate_OpenSSL_X509.h in CopyFiles */,
-				58AA742118AD086000E958C6 /* MscRSAKey_OpenSSL_RSA.h in CopyFiles */,
-				58AA742018AD085100E958C6 /* MscErrorCodes.h in CopyFiles */,
-				58618EB218A0D84E003377DA /* MscCertificateSubject.h in CopyFiles */,
+				1A14D7A919E40FBE00A8318A /* MscSCEPTransaction.h in CopyFiles */,
+				1A14D7A719E40FB800A8318A /* MscSCEPResponsePrivate.h in CopyFiles */,
+				58AC753B19DD2A6B0031F7C8 /* NSString+MscRandomExtension.h in CopyFiles */,
+				58744CB6199505D900D8AB8C /* MscSCEPError.h in CopyFiles */,
 				58618EB118A0D823003377DA /* MscSCEPResponse.h in CopyFiles */,
-				58618EB018A0D81D003377DA /* MscCertificateSigningRequest.h in CopyFiles */,
-				58618EAF18A0D816003377DA /* MscCertificate.h in CopyFiles */,
-				58618EAE18A0D812003377DA /* MscRSAKey.h in CopyFiles */,
 				588112201883E2A700D59AEF /* MscSCEP.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,50 +58,33 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1AB1471E1A0820970001EBB9 /* MscHTTPSURLConnection.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MscHTTPSURLConnection.xcodeproj; path = ../MscHTTPSURLConnection/MscHTTPSURLConnection.xcodeproj; sourceTree = "<group>"; };
+		1ABCEC1A1A06DCAE008024E0 /* libMscHTTPSURLConnection.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libMscHTTPSURLConnection.a; path = "../MscHTTPSURLConnection/build/Release-iphoneos/libMscHTTPSURLConnection.a"; sourceTree = "<group>"; };
 		5816CFA418A12B4000107FD3 /* MscSCEPMessageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPMessageUtils.h; sourceTree = "<group>"; };
 		5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPMessageUtils.m; sourceTree = "<group>"; };
-		5816CFAA18A21A9800107FD3 /* MscOpenSSLExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscOpenSSLExtension.h; sourceTree = "<group>"; };
-		5816CFAB18A21AA800107FD3 /* MscOpenSSLExtension.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = MscOpenSSLExtension.c; sourceTree = "<group>"; };
-		5831C57C189642A8000B873C /* MscCertificate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificate.h; sourceTree = "<group>"; };
-		5831C57D189642A8000B873C /* MscCertificate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificate.m; sourceTree = "<group>"; };
-		5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificate_OpenSSL_X509.h; sourceTree = "<group>"; };
-		5831C58218964A9A000B873C /* MscRSAKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscRSAKey.h; sourceTree = "<group>"; };
-		5831C58318964A9A000B873C /* MscRSAKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscRSAKey.m; sourceTree = "<group>"; };
-		5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscRSAKey_OpenSSL_RSA.h; sourceTree = "<group>"; };
-		5831C58618964E60000B873C /* MscCertificateSigningRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateSigningRequest.h; sourceTree = "<group>"; };
-		5831C58718964E60000B873C /* MscCertificateSigningRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateSigningRequest.m; sourceTree = "<group>"; };
-		5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscCertificateSigningRequest_OpenSSL_X509_REQ.h; sourceTree = "<group>"; };
 		5831C58A18993B18000B873C /* MscSCEPResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPResponse.h; sourceTree = "<group>"; };
 		5831C58B18993B19000B873C /* MscSCEPResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPResponse.m; sourceTree = "<group>"; };
 		5831C58D18993B53000B873C /* MscSCEPTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPTransaction.h; sourceTree = "<group>"; };
 		5831C58E18993B53000B873C /* MscSCEPTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPTransaction.m; sourceTree = "<group>"; };
-		586BBA0518A526F9005F1472 /* MscIssuerAndSerial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscIssuerAndSerial.h; sourceTree = "<group>"; };
-		586BBA0618A526F9005F1472 /* MscIssuerAndSerial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscIssuerAndSerial.m; sourceTree = "<group>"; };
-		586BBA0818A52707005F1472 /* MscIssuerAndSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscIssuerAndSubject.h; sourceTree = "<group>"; };
-		586BBA0918A52707005F1472 /* MscIssuerAndSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscIssuerAndSubject.m; sourceTree = "<group>"; };
-		5871EE5D188D6CE000098F95 /* MscErrorCodes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscErrorCodes.h; sourceTree = "<group>"; };
-		5871EE63189108DD00098F95 /* MscLocalException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscLocalException.h; sourceTree = "<group>"; };
-		5871EE64189108DD00098F95 /* MscLocalException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscLocalException.m; sourceTree = "<group>"; };
-		5871EE6A1891569A00098F95 /* NSString+MscExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MscExtensions.h"; sourceTree = "<group>"; };
-		5871EE6B1891569A00098F95 /* NSString+MscExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MscExtensions.m"; sourceTree = "<group>"; };
+		586DD4021994C79200BDBB6A /* MscSCEPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPError.h; sourceTree = "<group>"; };
+		586DD4031994C79200BDBB6A /* MscSCEPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPError.m; sourceTree = "<group>"; };
+		5871EE63189108DD00098F95 /* MscSCEPLocalException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPLocalException.h; sourceTree = "<group>"; };
+		5871EE64189108DD00098F95 /* MscSCEPLocalException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscSCEPLocalException.m; sourceTree = "<group>"; };
 		588112171883E2A700D59AEF /* libMscSCEP.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMscSCEP.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5881121A1883E2A700D59AEF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5881121E1883E2A700D59AEF /* MscSCEP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MscSCEP-Prefix.pch"; sourceTree = "<group>"; };
 		5881121F1883E2A700D59AEF /* MscSCEP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MscSCEP.h; sourceTree = "<group>"; };
 		588112211883E2A700D59AEF /* MscSCEP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MscSCEP.m; sourceTree = "<group>"; };
-		588112401883E33900D59AEF /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
-		588112411883E33900D59AEF /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
-		5881125C1885476D00D59AEF /* MscCertificateSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateSubject.h; sourceTree = "<group>"; };
-		5881125D1885476D00D59AEF /* MscCertificateSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateSubject.m; sourceTree = "<group>"; };
-		588AFC9718AB9DCD00647FDD /* MscCertificateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateUtils.h; sourceTree = "<group>"; };
-		588AFC9818AB9DCD00647FDD /* MscCertificateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateUtils.m; sourceTree = "<group>"; };
 		588AFC9B18ABA22700647FDD /* MscSCEPResponsePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscSCEPResponsePrivate.h; sourceTree = "<group>"; };
-		588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateRevocationList.h; sourceTree = "<group>"; };
-		588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscCertificateRevocationList.m; sourceTree = "<group>"; };
-		589F2EEF18B35E22004BAA3E /* MscPKCS12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscPKCS12.h; sourceTree = "<group>"; };
-		589F2EF018B35E22004BAA3E /* MscPKCS12.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MscPKCS12.m; sourceTree = "<group>"; };
-		589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscPKCS12_OpenSSL_PKCS12.h; sourceTree = "<group>"; };
-		58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MscCertificateRevocationList_OpenSSL_X509_CRL.h; sourceTree = "<group>"; };
+		58AC753819DD29FA0031F7C8 /* NSString+MscRandomExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MscRandomExtension.h"; sourceTree = "<group>"; };
+		58AC753919DD29FA0031F7C8 /* NSString+MscRandomExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MscRandomExtension.m"; sourceTree = "<group>"; };
+		58AC753C19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MscURLEncodeExtension.h"; sourceTree = "<group>"; };
+		58AC753D19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MscURLEncodeExtension.m"; sourceTree = "<group>"; };
+		58F3992619599B4F00D706BB /* MscSCEPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MscSCEPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		58F3992E19599B4F00D706BB /* MscSCEPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MscSCEPTests-Info.plist"; sourceTree = "<group>"; };
+		58F3993019599B4F00D706BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		58F3993219599B4F00D706BB /* MscSCEPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MscSCEPTests.m; sourceTree = "<group>"; };
+		58F3993419599B4F00D706BB /* MscSCEPTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MscSCEPTests-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,19 +92,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5815C9BC18AE19D800FC0429 /* libcrypto.a in Frameworks */,
-				5815C9BD18AE19D800FC0429 /* libssl.a in Frameworks */,
+				1AB1472E1A0822C10001EBB9 /* libMscHTTPSURLConnection.a in Frameworks */,
 				5881121B1883E2A700D59AEF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58F3992319599B4F00D706BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58FED02519A369D7006CDDC9 /* libMscSCEP.a in Frameworks */,
+				58F3992919599B4F00D706BB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AB1471F1A0820970001EBB9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AB147231A0820970001EBB9 /* libMscHTTPSURLConnection.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5881120E1883E2A700D59AEF = {
 			isa = PBXGroup;
 			children = (
-				5881121C1883E2A700D59AEF /* libMscSCEP */,
+				1AB1471E1A0820970001EBB9 /* MscHTTPSURLConnection.xcodeproj */,
+				5881121C1883E2A700D59AEF /* MscSCEP */,
+				58F3992C19599B4F00D706BB /* MscSCEPTests */,
 				588112191883E2A700D59AEF /* Frameworks */,
 				588112181883E2A700D59AEF /* Products */,
 			);
@@ -142,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				588112171883E2A700D59AEF /* libMscSCEP.a */,
+				58F3992619599B4F00D706BB /* MscSCEPTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,23 +140,24 @@
 		588112191883E2A700D59AEF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				588112401883E33900D59AEF /* libcrypto.a */,
-				588112411883E33900D59AEF /* libssl.a */,
+				1ABCEC1A1A06DCAE008024E0 /* libMscHTTPSURLConnection.a */,
 				5881121A1883E2A700D59AEF /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5881121C1883E2A700D59AEF /* libMscSCEP */ = {
+		5881121C1883E2A700D59AEF /* MscSCEP */ = {
 			isa = PBXGroup;
 			children = (
+				58AC753619DD29BF0031F7C8 /* Extensions */,
 				588AFCA318ABA47900647FDD /* Core */,
 				588AFCA218ABA46300647FDD /* Utils */,
-				588AFCA118ABA40300647FDD /* Entities */,
-				588AFCA018ABA3EB00647FDD /* Extensions */,
 				5881121D1883E2A700D59AEF /* Supporting Files */,
+				586DD4021994C79200BDBB6A /* MscSCEPError.h */,
+				586DD4031994C79200BDBB6A /* MscSCEPError.m */,
 			);
-			path = libMscSCEP;
+			name = MscSCEP;
+			path = src;
 			sourceTree = "<group>";
 		};
 		5881121D1883E2A700D59AEF /* Supporting Files */ = {
@@ -176,39 +168,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		588AFCA018ABA3EB00647FDD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5816CFAA18A21A9800107FD3 /* MscOpenSSLExtension.h */,
-				5816CFAB18A21AA800107FD3 /* MscOpenSSLExtension.c */,
-				5871EE6A1891569A00098F95 /* NSString+MscExtensions.h */,
-				5871EE6B1891569A00098F95 /* NSString+MscExtensions.m */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
-		588AFCA118ABA40300647FDD /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				589F2EEE18B35E0E004BAA3E /* PKCS12 */,
-				588AFCA418ABA4B100647FDD /* RSAKey */,
-				588AFCA518ABA4BC00647FDD /* CertificateSigningRequest */,
-				588AFCA618ABA4CA00647FDD /* Certificate */,
-				588AFCA718ABA4D800647FDD /* CertificateRevocationList */,
-				588AFCA818ABA4F400647FDD /* CertificateSubject */,
-				588AFCA918ABA50500647FDD /* IssuerAndSerial */,
-				588AFCAA18ABA51000647FDD /* IssuerAndSubject */,
-			);
-			name = Entities;
-			sourceTree = "<group>";
-		};
 		588AFCA218ABA46300647FDD /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				5816CFA418A12B4000107FD3 /* MscSCEPMessageUtils.h */,
 				5816CFA518A12B4000107FD3 /* MscSCEPMessageUtils.m */,
-				588AFC9718AB9DCD00647FDD /* MscCertificateUtils.h */,
-				588AFC9818AB9DCD00647FDD /* MscCertificateUtils.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -218,9 +182,8 @@
 			children = (
 				5881121F1883E2A700D59AEF /* MscSCEP.h */,
 				588112211883E2A700D59AEF /* MscSCEP.m */,
-				5871EE5D188D6CE000098F95 /* MscErrorCodes.h */,
-				5871EE63189108DD00098F95 /* MscLocalException.h */,
-				5871EE64189108DD00098F95 /* MscLocalException.m */,
+				5871EE63189108DD00098F95 /* MscSCEPLocalException.h */,
+				5871EE64189108DD00098F95 /* MscSCEPLocalException.m */,
 				5831C58A18993B18000B873C /* MscSCEPResponse.h */,
 				588AFC9B18ABA22700647FDD /* MscSCEPResponsePrivate.h */,
 				5831C58B18993B19000B873C /* MscSCEPResponse.m */,
@@ -230,81 +193,34 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		588AFCA418ABA4B100647FDD /* RSAKey */ = {
+		58AC753619DD29BF0031F7C8 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				5831C58218964A9A000B873C /* MscRSAKey.h */,
-				5831C58318964A9A000B873C /* MscRSAKey.m */,
-				5831C58518964AB0000B873C /* MscRSAKey_OpenSSL_RSA.h */,
+				58AC753819DD29FA0031F7C8 /* NSString+MscRandomExtension.h */,
+				58AC753919DD29FA0031F7C8 /* NSString+MscRandomExtension.m */,
+				58AC753C19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.h */,
+				58AC753D19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.m */,
 			);
-			name = RSAKey;
+			name = Extensions;
 			sourceTree = "<group>";
 		};
-		588AFCA518ABA4BC00647FDD /* CertificateSigningRequest */ = {
+		58F3992C19599B4F00D706BB /* MscSCEPTests */ = {
 			isa = PBXGroup;
 			children = (
-				5831C58618964E60000B873C /* MscCertificateSigningRequest.h */,
-				5831C58718964E60000B873C /* MscCertificateSigningRequest.m */,
-				5831C58918964E7F000B873C /* MscCertificateSigningRequest_OpenSSL_X509_REQ.h */,
+				58F3993219599B4F00D706BB /* MscSCEPTests.m */,
+				58F3992D19599B4F00D706BB /* Supporting Files */,
 			);
-			name = CertificateSigningRequest;
+			path = MscSCEPTests;
 			sourceTree = "<group>";
 		};
-		588AFCA618ABA4CA00647FDD /* Certificate */ = {
+		58F3992D19599B4F00D706BB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5831C57C189642A8000B873C /* MscCertificate.h */,
-				5831C57D189642A8000B873C /* MscCertificate.m */,
-				5831C57F189642C3000B873C /* MscCertificate_OpenSSL_X509.h */,
+				58F3992E19599B4F00D706BB /* MscSCEPTests-Info.plist */,
+				58F3992F19599B4F00D706BB /* InfoPlist.strings */,
+				58F3993419599B4F00D706BB /* MscSCEPTests-Prefix.pch */,
 			);
-			name = Certificate;
-			sourceTree = "<group>";
-		};
-		588AFCA718ABA4D800647FDD /* CertificateRevocationList */ = {
-			isa = PBXGroup;
-			children = (
-				588AFCAB18ABA7AA00647FDD /* MscCertificateRevocationList.h */,
-				588AFCAC18ABA7AA00647FDD /* MscCertificateRevocationList.m */,
-				58DF5C6918A4E4F100193F61 /* MscCertificateRevocationList_OpenSSL_X509_CRL.h */,
-			);
-			name = CertificateRevocationList;
-			sourceTree = "<group>";
-		};
-		588AFCA818ABA4F400647FDD /* CertificateSubject */ = {
-			isa = PBXGroup;
-			children = (
-				5881125C1885476D00D59AEF /* MscCertificateSubject.h */,
-				5881125D1885476D00D59AEF /* MscCertificateSubject.m */,
-			);
-			name = CertificateSubject;
-			sourceTree = "<group>";
-		};
-		588AFCA918ABA50500647FDD /* IssuerAndSerial */ = {
-			isa = PBXGroup;
-			children = (
-				586BBA0518A526F9005F1472 /* MscIssuerAndSerial.h */,
-				586BBA0618A526F9005F1472 /* MscIssuerAndSerial.m */,
-			);
-			name = IssuerAndSerial;
-			sourceTree = "<group>";
-		};
-		588AFCAA18ABA51000647FDD /* IssuerAndSubject */ = {
-			isa = PBXGroup;
-			children = (
-				586BBA0818A52707005F1472 /* MscIssuerAndSubject.h */,
-				586BBA0918A52707005F1472 /* MscIssuerAndSubject.m */,
-			);
-			name = IssuerAndSubject;
-			sourceTree = "<group>";
-		};
-		589F2EEE18B35E0E004BAA3E /* PKCS12 */ = {
-			isa = PBXGroup;
-			children = (
-				589F2EEF18B35E22004BAA3E /* MscPKCS12.h */,
-				589F2EF018B35E22004BAA3E /* MscPKCS12.m */,
-				589F2EF218B35E36004BAA3E /* MscPKCS12_OpenSSL_PKCS12.h */,
-			);
-			name = PKCS12;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +243,23 @@
 			productReference = 588112171883E2A700D59AEF /* libMscSCEP.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		58F3992519599B4F00D706BB /* MscSCEPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58F3993719599B4F00D706BB /* Build configuration list for PBXNativeTarget "MscSCEPTests" */;
+			buildPhases = (
+				58F3992219599B4F00D706BB /* Sources */,
+				58F3992319599B4F00D706BB /* Frameworks */,
+				58F3992419599B4F00D706BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MscSCEPTests;
+			productName = MscSCEPTests;
+			productReference = 58F3992619599B4F00D706BB /* MscSCEPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -335,6 +268,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Microsec;
+				TargetAttributes = {
+					58F3992519599B4F00D706BB = {
+						TestTargetID = 588112161883E2A700D59AEF;
+					};
+				};
 			};
 			buildConfigurationList = 588112121883E2A700D59AEF /* Build configuration list for PBXProject "MscSCEP" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -346,38 +284,77 @@
 			mainGroup = 5881120E1883E2A700D59AEF;
 			productRefGroup = 588112181883E2A700D59AEF /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1AB1471F1A0820970001EBB9 /* Products */;
+					ProjectRef = 1AB1471E1A0820970001EBB9 /* MscHTTPSURLConnection.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				588112161883E2A700D59AEF /* MscSCEP */,
+				58F3992519599B4F00D706BB /* MscSCEPTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1AB147231A0820970001EBB9 /* libMscHTTPSURLConnection.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMscHTTPSURLConnection.a;
+			remoteRef = 1AB147221A0820970001EBB9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		58F3992419599B4F00D706BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58F3993119599B4F00D706BB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		588112131883E2A700D59AEF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				586BBA0A18A52707005F1472 /* MscIssuerAndSubject.m in Sources */,
-				5881125E1885476D00D59AEF /* MscCertificateSubject.m in Sources */,
-				5831C57E189642A8000B873C /* MscCertificate.m in Sources */,
-				5871EE65189108DD00098F95 /* MscLocalException.m in Sources */,
+				5871EE65189108DD00098F95 /* MscSCEPLocalException.m in Sources */,
 				5831C58F18993B53000B873C /* MscSCEPTransaction.m in Sources */,
-				588AFC9918AB9DCD00647FDD /* MscCertificateUtils.m in Sources */,
-				586BBA0718A526F9005F1472 /* MscIssuerAndSerial.m in Sources */,
 				5816CFA618A12B4000107FD3 /* MscSCEPMessageUtils.m in Sources */,
+				58AC753A19DD29FA0031F7C8 /* NSString+MscRandomExtension.m in Sources */,
+				58AC753E19DD2B150031F7C8 /* NSString+MscURLEncodeExtension.m in Sources */,
 				588112221883E2A700D59AEF /* MscSCEP.m in Sources */,
-				5831C58418964A9A000B873C /* MscRSAKey.m in Sources */,
 				5831C58C18993B19000B873C /* MscSCEPResponse.m in Sources */,
-				5831C58818964E60000B873C /* MscCertificateSigningRequest.m in Sources */,
-				5816CFAC18A21AA800107FD3 /* MscOpenSSLExtension.c in Sources */,
-				589F2EF118B35E22004BAA3E /* MscPKCS12.m in Sources */,
-				588AFCAE18ABA7AA00647FDD /* MscCertificateRevocationList.m in Sources */,
-				5871EE6C1891569A00098F95 /* NSString+MscExtensions.m in Sources */,
+				586DD4041994C79200BDBB6A /* MscSCEPError.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		58F3992219599B4F00D706BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58F3993319599B4F00D706BB /* MscSCEPTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		58F3992F19599B4F00D706BB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				58F3993019599B4F00D706BB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		588112381883E2A700D59AEF /* Debug */ = {
@@ -412,10 +389,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libMscSCEP/include";
+				USER_HEADER_SEARCH_PATHS = "../MscX509Common/include ../MscX509Common/libraries/openssl/include";
 			};
 			name = Debug;
 		};
@@ -445,9 +423,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
 				SDKROOT = iphoneos;
-				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/libMscSCEP/include";
+				USER_HEADER_SEARCH_PATHS = "../MscX509Common/include ../MscX509Common/libraries/openssl/include";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -457,15 +436,13 @@
 			buildSettings = {
 				DSTROOT = /tmp/libMscSCEP.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "libMscSCEP/MscSCEP-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/microsec/projects/libMscSCEP,
-					/Users/microsec/projects/ios/libraries/trunk/libMscSCEP,
-				);
+				GCC_PREFIX_HEADER = "src/MscSCEP-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MscSCEP;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 			};
 			name = Debug;
 		};
@@ -474,15 +451,69 @@
 			buildSettings = {
 				DSTROOT = /tmp/libMscSCEP.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "libMscSCEP/MscSCEP-Prefix.pch";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/microsec/projects/libMscSCEP,
-					/Users/microsec/projects/ios/libraries/trunk/libMscSCEP,
-				);
+				GCC_PREFIX_HEADER = "src/MscSCEP-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MscSCEP;
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
+			};
+			name = Release;
+		};
+		58F3993819599B4F00D706BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MscSCEPTests/MscSCEPTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "MscSCEPTests/MscSCEPTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		58F3993919599B4F00D706BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MscSCEPTests/MscSCEPTests-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "MscSCEPTests/MscSCEPTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					XCTest,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -503,6 +534,15 @@
 			buildConfigurations = (
 				5881123B1883E2A700D59AEF /* Debug */,
 				5881123C1883E2A700D59AEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58F3993719599B4F00D706BB /* Build configuration list for PBXNativeTarget "MscSCEPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58F3993819599B4F00D706BB /* Debug */,
+				58F3993919599B4F00D706BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
