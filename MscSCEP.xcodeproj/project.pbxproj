@@ -37,6 +37,13 @@
 			remoteGlobalIDString = 1A923AB419FE3CCD00169C84;
 			remoteInfo = MscHTTPSURLConnection;
 		};
+		6D06964F1A97584D00E0FA7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AB1471E1A0820970001EBB9 /* MscHTTPSURLConnection.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 1A923AB319FE3CCD00169C84;
+			remoteInfo = MscHTTPSURLConnection;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -237,6 +244,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6D0696501A97584D00E0FA7F /* PBXTargetDependency */,
 			);
 			name = MscSCEP;
 			productName = libMscSCEP;
@@ -344,6 +352,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D0696501A97584D00E0FA7F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MscHTTPSURLConnection;
+			targetProxy = 6D06964F1A97584D00E0FA7F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		58F3992F19599B4F00D706BB /* InfoPlist.strings */ = {

@@ -93,7 +93,7 @@ static int nid_extensionReq;
             requestLength = i2d_X509_REQ(transaction.certificateSigningRequest._request, &requestData);
             if (requestLength < 1) {
                 NSLog(@"Failed to encode SCEP message, function i2d_X509_REQ returned with: %ld", requestLength);
-                @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
             }
         }
         else if (messageType == SCEPMessage_GetCertInitial) {
@@ -101,7 +101,7 @@ static int nid_extensionReq;
             issuerAndSubject = PKCS7_ISSUER_AND_SUBJECT_new();
             if (!issuerAndSubject) {
                 NSLog(@"Failed to allocate memory for variable: issuerAndSubject");
-                @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
             }
             
             issuerAndSubject->issuer = [MscCertificateUtils convertMscX509NameToX509_NAME:transaction.issuerAndSubject.issuer];
@@ -110,7 +110,7 @@ static int nid_extensionReq;
             requestLength = i2d_PKCS7_ISSUER_AND_SUBJECT(issuerAndSubject, &requestData);
             if (requestLength < 1) {
                 NSLog(@"Failed to encode SCEP message, function i2d_PKCS7_ISSUER_AND_SUBJECT returned with: %ld", requestLength);
-                @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
             }
         }
         else if (messageType == SCEPMessage_GetCRL || messageType == SCEPMessage_GetCert) {
@@ -118,7 +118,7 @@ static int nid_extensionReq;
             issuerAndSerial = PKCS7_ISSUER_AND_SERIAL_new();
             if (!issuerAndSerial) {
                 NSLog(@"Failed to allocate memory for variable: issuerAndSerial");
-                @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
             }
             
             issuerAndSerial->issuer = [MscCertificateUtils convertMscX509NameToX509_NAME:transaction.issuerAndSerial.issuer];
@@ -127,14 +127,14 @@ static int nid_extensionReq;
             requestLength = i2d_PKCS7_ISSUER_AND_SERIAL(issuerAndSerial, &requestData);
             if (requestLength < 1) {
                 NSLog(@"Failed to encode SCEP message, function i2d_PKCS7_ISSUER_AND_SERIAL returned with: %ld", requestLength);
-                @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
             }
         }
         
         recipients = sk_X509_new_null();
         if (!recipients) {
             NSLog(@"Failed to allocate memory for variable: recipients");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         sk_X509_push(recipients, transaction.caCertificate._x509);
@@ -142,50 +142,50 @@ static int nid_extensionReq;
         beEncrypted = BIO_new_mem_buf(requestData, (int)requestLength);
         if (!beEncrypted) {
             NSLog(@"Failed to allocate memory for variable: beEncrypted");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         encryptedPKCS7 = PKCS7_encrypt(recipients, beEncrypted, EVP_des_ede3_cbc(), PKCS7_BINARY);
         if (!encryptedPKCS7) {
             NSLog(@"Failed to encode SCEP message, function: PKCS7_encrypt");
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         long encryptedPKCS7Length = i2d_PKCS7(encryptedPKCS7, &encryptedPKCS7Data);
         if (encryptedPKCS7Length < 1) {
             NSLog(@"Failed to encode SCEP message, function i2d_PKCS7 returned with: %ld", encryptedPKCS7Length);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         signedPKCS7 = PKCS7_new();
         if (!signedPKCS7) {
             NSLog(@"Failed to allocate memory for variable: signedPKCS7");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         returnCode = PKCS7_set_type(signedPKCS7, NID_pkcs7_signed);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_set_type returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = PKCS7_add_certificate(signedPKCS7, transaction.signerCertificate._x509);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_add_certificate returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         signerInfo = PKCS7_add_signature(signedPKCS7, transaction.signerCertificate._x509, transaction.signerKey._evp_pkey, EVP_get_digestbynid(OBJ_obj2nid(transaction.signerCertificate._x509->sig_alg->algorithm)));
         if (!signerInfo) {
             NSLog(@"Failed to encode SCEP message, function: PKCS7_add_signature");
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         
         signedPKCS7attributes = sk_X509_ATTRIBUTE_new_null();
         if (!signedPKCS7attributes) {
             NSLog(@"Failed to allocate memory for variable: signedPKCS7");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         [self setAttribute:signedPKCS7attributes nid:nid_transId type:V_ASN1_PRINTABLESTRING value:transaction.transactionID error:&localError];
@@ -206,62 +206,62 @@ static int nid_extensionReq;
         returnCode = PKCS7_set_signed_attributes(signerInfo, signedPKCS7attributes);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_set_signed_attributes returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = PKCS7_add_signed_attribute(signerInfo, NID_pkcs9_contentType,
                                                 V_ASN1_OBJECT, OBJ_nid2obj(NID_pkcs7_data));
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_add_signed_attribute returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = PKCS7_content_new(signedPKCS7, NID_pkcs7_data);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_content_new returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         signedPKCS7BIO = PKCS7_dataInit(signedPKCS7, NULL);
         if (!signedPKCS7BIO) {
             NSLog(@"Failed to encode SCEP message, function: PKCS7_dataInit");
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = BIO_write(signedPKCS7BIO, encryptedPKCS7Data, (int)encryptedPKCS7Length);
         if (returnCode != encryptedPKCS7Length) {
             NSLog(@"Failed to encode SCEP message, function: BIO_write");
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = PKCS7_dataFinal(signedPKCS7, signedPKCS7BIO);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function PKCS7_dataFinal returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         memoryBIO = BIO_new(BIO_s_mem());
         if (!memoryBIO) {
             NSLog(@"Failed to allocate memory for variable: memoryBIO");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         base64BIO = BIO_new(BIO_f_base64());
         if (!base64BIO) {
             NSLog(@"Failed to allocate memory for variable: base64BIO");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         base64EncodedPKCS7BIO = BIO_push(base64BIO, memoryBIO);
         if (!base64EncodedPKCS7BIO) {
             NSLog(@"Failed to encode SCEP message, function: BIO_push");
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         returnCode = i2d_PKCS7_bio(base64EncodedPKCS7BIO, signedPKCS7);
         if (!returnCode) {
             NSLog(@"Failed to encode SCEP message, function i2d_PKCS7_bio returned with: %d", returnCode);
-            @throw [MscSCEPError errorWithCode:FailedToEncodeSCEPMessage];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToEncodeSCEPMessage];
         }
         
         BIO_flush(base64EncodedPKCS7BIO);
@@ -328,13 +328,13 @@ static int nid_extensionReq;
         signedPKCS7BIO = PKCS7_dataInit(responsePKCS7, NULL);
         if (!signedPKCS7BIO) {
             NSLog(@"Failed to allocate memory for variable: signedPKCS7BIO");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         envelopedPKCS7BIO = BIO_new(BIO_s_mem());
         if (!envelopedPKCS7BIO) {
             NSLog(@"Failed to allocate memory for variable: envelopedPKCS7BIO");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         //copy signedPKCS7BIO to envelopedPKCS7BIO
@@ -422,13 +422,13 @@ static int nid_extensionReq;
             envelopedPKCS7 = d2i_PKCS7_bio(envelopedPKCS7BIO, NULL);
             if (!envelopedPKCS7) {
                 NSLog(@"Failed to decode SCEP message, enveloped object is not a valid PKCS7 structure");
-                @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
             }
             
             decryptedPKCS7BIO = BIO_new(BIO_s_mem());
             if (!decryptedPKCS7BIO) {
                 NSLog(@"Failed to allocate memory for variable: decryptedPKCS7BIO");
-                @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
             }
             
             returnCode = PKCS7_decrypt(envelopedPKCS7, transaction.signerKey._evp_pkey, transaction.signerCertificate._x509, decryptedPKCS7BIO, 0);
@@ -449,7 +449,7 @@ static int nid_extensionReq;
             decryptedPKCS7 = d2i_PKCS7_bio(decryptedPKCS7BIO, NULL);
             if (!decryptedPKCS7) {
                 NSLog(@"Failed to allocate memory for variable: decryptedPKCS7");
-                @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+                @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
             }
             
             
@@ -567,7 +567,7 @@ static int nid_extensionReq;
         X509_ATTRIBUTE *x509Attribute = X509_ATTRIBUTE_create((int)nid, (int)type, asn1String);
         if (!x509Attribute) {
             NSLog(@"Failed to allocate memory for variable: x509Attribute");
-            @throw [MscSCEPError errorWithCode:FailedToAllocateMemory];
+            @throw [MscSCEPLocalException exceptionWithCode:FailedToAllocateMemory];
         }
         
         sk_X509_ATTRIBUTE_push(attributes, x509Attribute);

@@ -20,16 +20,12 @@ typedef void (^MscSCEPDownloadCACertificateCompletionHandler)(NSArray*, MscSCEPE
 -(MscSCEP*) init __attribute__((unavailable("please, use initWithURL for initialization")));
 -(id)initWithURL:(NSURL*)_url;
 
-//-(NSArray*)downloadCACertificateWithValidatorDelegate:(id<MscHTTPSValidatorDelegate>)validatorDelegate error:(MscSCEPError**)error;
 -(void)downloadCACertificateWithValidatorDelegate:(id<MscHTTPSValidatorDelegate>)validatorDelegate completionHandler:(MscSCEPDownloadCACertificateCompletionHandler)completionHandler;
 
-//-(MscSCEPResponse*)enrollWithRSAKey:(MscRSAKey*)rsaKey certificateSigningRequest:(MscCertificateSigningRequest*)certificateSigningRequest certificate:(MscCertificate*)certificate caCertificate:(MscCertificate*)caCertificate createPKCS12:(BOOL)createPKCS12 pkcs12Password:(NSString*)pkcs12Password validatorDelegate:(id<MscHTTPSValidatorDelegate>)validatorDelegate error:(MscSCEPError**)error;
 -(MscSCEPResponse*)enrollWithRSAKey:(MscRSAKey*)rsaKey certificateSigningRequest:(MscCertificateSigningRequest*)certificateSigningRequest certificate:(MscCertificate*)certificate caCertificate:(MscCertificate*)caCertificate createPKCS12:(BOOL)createPKCS12 pkcs12Password:(NSString*)pkcs12Password error:(MscSCEPError**)error;
 
-//-(MscSCEPResponse*)downloadCRLWithRSAKey:(MscRSAKey*)rsaKey certificate:(MscCertificate*)certificate issuer:(MscX509Name*)issuer serial:(NSString*)serial caCertificate:(MscCertificate*)caCertificate validatorDelegate:(id<MscHTTPSValidatorDelegate>)validatorDelegate error:(MscSCEPError**)error;
 -(MscSCEPResponse*)downloadCRLWithRSAKey:(MscRSAKey*)rsaKey certificate:(MscCertificate*)certificate issuer:(MscX509Name*)issuer serial:(NSString*)serial caCertificate:(MscCertificate*)caCertificate error:(MscSCEPError**)error;
 
-//-(MscSCEPResponse*)downloadCertificateWithRSAKey:(MscRSAKey*)rsaKey issuer:(MscX509Name*)issuer serial:(NSString*)serial caCertificate:(MscCertificate*)caCertificate validatorDelegate:(id<MscHTTPSValidatorDelegate>)validatorDelegate error:(MscSCEPError**)error;
 -(MscSCEPResponse*)downloadCertificateWithRSAKey:(MscRSAKey*)rsaKey issuer:(MscX509Name*)issuer serial:(NSString*)serial caCertificate:(MscCertificate*)caCertificate error:(MscSCEPError**)error;
 
 @end
